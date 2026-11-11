@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nonit Gupta — Frontend Engineer Portfolio</title>
+<style>
+:root{--bg:#f7fbff;--surface:#ffffff;--text:#0b2540;--muted:#5b7188;--accent:#0a8fd6;--accent2:#14c1c7;--line:#dcebf7;--shadow:0 10px 30px rgba(10,143,214,.12);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071a2b;--surface:#0d2740;--text:#e8f4ff;--muted:#93aec7;--line:#173a5a;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#071a2b;--surface:#0d2740;--text:#e8f4ff;--muted:#93aec7;--line:#173a5a;--shadow:0 10px 30px rgba(0,0,0,.35)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;overflow-x:hidden;transition:background .4s,color .4s}
+#bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:20;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;justify-content:space-between;align-items:center;padding:12px 6vw;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav b{font-size:1.1rem}
+.links{display:flex;align-items:center;gap:20px}
+.links a{color:var(--muted);text-decoration:none;font-size:.95rem;padding:4px 0;border-bottom:2px solid transparent;transition:color .3s,border-color .3s}
+.links a:hover,.links a.act{color:var(--accent);border-color:var(--accent)}
+#tg{background:var(--surface);border:1px solid var(--line);border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1rem;transition:transform .4s}
+#tg:hover{transform:rotate(20deg) scale(1.08)}
+section{padding:80px 6vw;max-width:1000px;margin:auto}
+.hero{min-height:86vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;z-index:-1;animation:float 9s ease-in-out infinite}
+.hero::before{width:300px;height:300px;background:var(--accent);right:-40px;top:10%}
+.hero::after{width:220px;height:220px;background:var(--accent2);right:20%;bottom:5%;animation-delay:-4s}
+@keyframes float{50%{transform:translateY(-28px) translateX(12px)}}
+.rip{position:absolute;width:10px;height:10px;border:2px solid var(--accent2);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;animation:rip 1.2s ease-out forwards}
+@keyframes rip{to{width:150px;height:150px;opacity:0}}
+.tag{color:var(--accent);font-weight:600;letter-spacing:2px;font-size:.85rem;text-transform:uppercase}
+h1{font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.1;margin:.3em 0}
+h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.line{display:block;min-height:1.1em}
+.caret{display:inline-block;width:3px;height:.9em;background:var(--accent);margin-left:4px;vertical-align:-.05em;animation:blink .8s steps(1) infinite}
+.caret.done{opacity:0;transition:opacity .6s;animation:none}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--muted);max-width:560px;font-size:1.1rem}
+.btns{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:12px 26px;border-radius:999px;text-decoration:none;font-weight:600;transition:transform .3s,box-shadow .3s;border:1px solid var(--accent)}
+.btn.p{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;box-shadow:var(--shadow)}
+.btn.s{color:var(--accent)}
+.btn:hover{transform:translateY(-3px)}
+.wave{height:70px;overflow:hidden;position:relative;margin-top:-1px}
+.wave svg{position:absolute;left:0;bottom:0;width:200%;height:100%;fill:var(--accent);opacity:.14;animation:slide 14s linear infinite}
+.wave svg+svg{opacity:.2;fill:var(--accent2);animation-duration:9s;animation-direction:reverse}
+@keyframes slide{to{transform:translateX(-50%)}}
+h2{font-size:1.9rem;margin:0 0 30px}
+h2::after{content:"";display:block;width:54px;height:4px;border-radius:4px;margin-top:10px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.card{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow);transition:transform .35s,box-shadow .35s,background .4s,border-color .4s}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(20,193,199,.22),transparent 70%)}
+.card:hover::after{opacity:1}
+.card:hover{transform:translateY(-4px)}
+.tl{position:relative;padding-left:40px}
+.tl::before{content:"";position:absolute;left:8px;top:8px;bottom:0;width:3px;border-radius:3px;background:var(--line)}
+#fill{position:absolute;left:8px;top:8px;width:3px;height:0;border-radius:3px;background:linear-gradient(var(--accent),var(--accent2))}
+.dot{position:absolute;left:0;top:6px;width:19px;height:19px;border-radius:50%;background:var(--surface);border:4px solid var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 18%,transparent)}
+.role{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.role h3{margin:0}.role small{color:var(--muted)}
+.co{color:var(--accent);font-weight:600;margin:2px 0 12px}
+ul{padding-left:20px;margin:0;color:var(--muted)}
+li{margin:8px 0}li b{color:var(--text)}
+.stat{margin-top:18px;padding:14px 18px;border-radius:14px;background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 14%,transparent),color-mix(in srgb,var(--accent2) 14%,transparent));font-weight:600}
+.stat span{color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chips span{padding:6px 14px;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-size:.85rem;color:var(--accent);opacity:0;transform:translateY(12px) scale(.9);transition:opacity .5s,transform .5s cubic-bezier(.3,1.5,.5,1),background .3s,color .3s}
+.in .chips span,.chips.in span{opacity:1;transform:none}
+.chips span:hover{background:var(--accent);color:#fff;transform:translateY(-3px)}
+.grp{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.grp h4{margin:0 0 4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.grid a{display:block;text-decoration:none;color:var(--text)}
+.grid small{color:var(--muted);display:block;word-break:break-all}
+.grid strong{display:block;color:var(--accent);margin-bottom:4px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.9rem}
+@media(max-width:640px){.links{gap:8px;flex-wrap:wrap;justify-content:flex-end}.links a{font-size:.72rem}#tg{width:32px;height:32px}nav b{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.reveal,.chips span{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<nav><b>Nonit</b><div class="links"><a href="#about">About</a><a href="#craft">Frontend</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a><button id="tg" aria-label="Toggle light and dark theme"></button></div></nav>
+
+<section class="hero" id="top">
+<div class="tag reveal">Frontend Engineer</div>
+<h1 class="reveal" aria-label="Hi, I’m Nonit. I build clean, fluid interfaces."><span class="line" aria-hidden="true"><span id="a">Hi, I’m </span><span class="grad" id="b">Nonit</span><span id="c">.</span><i class="caret" id="caret"></i></span>I build clean, fluid interfaces.</h1>
+<p class="lead reveal">Frontend engineer who loves building fast, fluid and accessible interfaces, backed by a machine learning and data engineering background that helps me turn complex systems into clear UIs.</p>
+<div class="btns reveal"><a class="btn p" href="#contact">Get in touch</a><a class="btn s" href="https://github.com/nonit-gupta" target="_blank" rel="noopener">View GitHub</a></div>
+</section>
+
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 60Q360 0 720 60T1440 60T2160 60T2880 60V120H0Z"/></svg><svg viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 70Q360 10 720 70T1440 70T2160 70T2880 70V120H0Z"/></svg></div>
+
+<section id="about">
+<h2 class="reveal">About</h2>
+<div class="card tilt reveal"><p style="margin:0">I’m a frontend engineer who cares about interfaces that feel smooth, accessible and intentional. My background in machine learning and data engineering makes me comfortable with complex data and systems, and I use that to build UIs that make them easy to understand.</p></div>
+</section>
+
+<section id="craft">
+<h2 class="reveal">Frontend craft</h2>
+<div class="grp">
+<div class="card tilt reveal"><h4>Motion &amp; interaction</h4><p style="margin:0;color:var(--muted);font-size:.92rem">Typed hero text, scroll-triggered reveals, cursor-reactive card tilt and ripples, all in plain CSS and vanilla JavaScript.</p></div>
+<div class="card tilt reveal"><h4>3D &amp; graphics</h4><p style="margin:0;color:var(--muted);font-size:.92rem">A WebGL scene built with Three.js that responds to the cursor and the scroll position behind this page.</p></div>
+<div class="card tilt reveal"><h4>Theming &amp; accessibility</h4><p style="margin:0;color:var(--muted);font-size:.92rem">Light and dark themes with CSS variables, reduced-motion support, semantic HTML and keyboard-friendly navigation.</p></div>
+<div class="card tilt reveal"><h4>Responsive &amp; fast</h4><p style="margin:0;color:var(--muted);font-size:.92rem">Fluid layouts that work from phones to wide screens, with IntersectionObserver-based loading of effects and a lightweight single-file build.</p></div>
+</div>
+</section>
+
+<section id="experience">
+<h2 class="reveal">Experience</h2>
+<div class="tl" id="tl"><div id="fill"></div><div class="dot"></div>
+<div class="card reveal">
+<div class="role"><h3>AI Intern</h3><small>May ’26 – Jul ’26</small></div>
+<div class="co">Honeywell Technologies</div>
+<ul>
+<li>Built a <b>composable agentic data ingestion</b> pipeline, decoupling downstream pipelines from continuously evolving schemas.</li>
+<li>Designed modular, pluggable source connectors for <b>Elasticsearch</b>, <b>Kafka</b> and <b>PostgreSQL</b> for a source-agnostic architecture.</li>
+<li>Deployed a <b>4-bit quantized Microsoft Phi-4 SLM</b> to generate rich <b>semantic metadata</b>, descriptions and confidence scores.</li>
+<li>Implemented a <b>supervisor-worker LLM design</b>, using Phi-4 as the worker and <b>Claude Opus 4.6</b> as the validating agent.</li>
+<li>Orchestrated a <b>stateful agentic workflow</b> using <b>LangGraph</b> to enable cyclic, conditional retry loops and <b>self-healing</b> logic.</li>
+<li>Deployed the <b>compound AI</b> ingestion system as a scheduled <b>Databricks Job</b> using <b>Declarative Automation Bundles</b>.</li>
+</ul>
+<div class="stat">Impact: ingestion turnaround cut from <span>~4 weeks</span> to <span>1–2 days</span>, accelerating downstream analytics.</div>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<h2 class="reveal">Skills</h2>
+<div class="grp">
+<div class="card tilt reveal"><h4>Frontend</h4><div class="chips"><span>HTML / CSS</span><span>JavaScript</span><span>React</span><span>Three.js / WebGL</span><span>Responsive design</span><span>Accessibility</span></div></div>
+<div class="card tilt reveal"><h4>AI &amp; ML</h4><div class="chips"><span>LLMs</span><span>Agentic workflows</span><span>LangGraph</span><span>Phi-4</span><span>Deep Learning</span></div></div>
+<div class="card tilt reveal"><h4>Data &amp; Cloud</h4><div class="chips"><span>Python</span><span>Kafka</span><span>Elasticsearch</span><span>PostgreSQL</span><span>Databricks</span></div></div>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="reveal">Contact</h2>
+<div class="grid">
+<a class="card tilt reveal" href="https://github.com/nonit-gupta" target="_blank" rel="noopener"><strong>GitHub</strong><small>github.com/nonit-gupta</small></a>
+<a class="card tilt reveal" href="https://www.linkedin.com/in/nonit-gupta" target="_blank" rel="noopener"><strong>LinkedIn</strong><small>linkedin.com/in/nonit-gupta</small></a>
+<a class="card tilt reveal" href="mailto:nonitguptatg29@gmail.com"><strong>Email</strong><small>nonitguptatg29@gmail.com</small></a>
+<a class="card tilt reveal" href="tel:+919807499500"><strong>Phone</strong><small>+91 98074 99500</small></a>
+</div>
+</section>
+
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 60Q360 0 720 60T1440 60T2160 60T2880 60V120H0Z"/></svg><svg viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 70Q360 10 720 70T1440 70T2160 70T2880 70V120H0Z"/></svg></div>
+<footer>© <span id="y"></span> Nonit Gupta · Built with care</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+document.getElementById("y").textContent=new Date().getFullYear();
+var RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+/* typing, once */
+(function(){
+var p=[a=document.getElementById("a"),document.getElementById("b"),document.getElementById("c")],t=["Hi, I’m ","Nonit","."],cr=document.getElementById("caret");
+if(RM){cr.style.display="none";return}
+p.forEach(function(x){x.textContent=""});
+var i=0,c=0;
+function s(){if(i>=p.length){setTimeout(function(){cr.classList.add("done")},1200);return}
+c++;p[i].textContent=t[i].slice(0,c);if(c>=t[i].length){i++;c=0}setTimeout(s,95)}
+setTimeout(s,700);
+})();
+/* theme toggle */
+(function(){
+var r=document.documentElement,b=document.getElementById("tg");
+function d(){var x=r.getAttribute("data-theme");return x?x==="dark":matchMedia("(prefers-color-scheme:dark)").matches}
+function paint(){b.textContent=d()?"☀️":"🌙"}
+b.onclick=function(){r.setAttribute("data-theme",d()?"light":"dark");paint()};paint();
+})();
+/* reveal */
+var els=document.querySelectorAll(".reveal,.chips");
+if("IntersectionObserver" in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;el.classList.add("in");io.unobserve(el);
+if(el.classList.contains("chips")){el.querySelectorAll("span").forEach(function(s,k){s.style.transitionDelay=k*70+"ms";setTimeout(function(){s.style.transitionDelay=""},1200)})}
+else{setTimeout(function(){el.style.transitionDelay=""},1200)}}})},{threshold:.15});
+els.forEach(function(el,i){if(!el.classList.contains("chips"))el.style.transitionDelay=(i%4)*80+"ms";io.observe(el)});
+}else{els.forEach(function(el){el.classList.add("in")})}
+/* active nav */
+var links=document.querySelectorAll(".links a");
+if("IntersectionObserver" in window){
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle("act",l.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("section[id]").forEach(function(s){so.observe(s)});
+}
+/* scroll progress + timeline fill */
+var bar=document.getElementById("bar"),tl=document.getElementById("tl"),fill=document.getElementById("fill");
+function onScroll(){
+var h=document.documentElement.scrollHeight-innerHeight;
+bar.style.transform="scaleX("+(h>0?scrollY/h:0)+")";
+var r=tl.getBoundingClientRect(),pr=Math.max(0,Math.min(1,(innerHeight*.7-r.top)/r.height));
+fill.style.height="calc("+(pr*100)+"% - 8px)";
+}
+addEventListener("scroll",onScroll,{passive:true});addEventListener("resize",onScroll);onScroll();
+/* card glow + tilt */
+document.querySelectorAll(".card").forEach(function(c){
+var tilt=c.classList.contains("tilt");
+c.addEventListener("pointermove",function(e){
+if(e.pointerType==="touch")return;
+var r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+c.style.setProperty("--mx",x+"px");c.style.setProperty("--my",y+"px");
+if(tilt&&!RM){c.style.transform="perspective(700px) rotateX("+((.5-y/r.height)*8)+"deg) rotateY("+((x/r.width-.5)*8)+"deg) translateY(-4px)"}
+});
+c.addEventListener("pointerleave",function(){c.style.transform=""});
+});
+/* 3D engineering background */
+(function(){
+if(!window.THREE)return;
+var T=THREE,cv=document.getElementById("gl"),rd;
+try{rd=new T.WebGLRenderer({canvas:cv,alpha:true,antialias:true})}catch(e){return}
+rd.setPixelRatio(Math.min(devicePixelRatio,1.5));
+var sc=new T.Scene(),cam=new T.PerspectiveCamera(50,1,.1,100);cam.position.z=8;
+var g=new T.Group();sc.add(g);
+var wire=[],solid=[],dots=[];
+function wm(){var m=new T.MeshBasicMaterial({wireframe:true,transparent:true});wire.push(m);return m}
+function sm(){var m=new T.MeshBasicMaterial({transparent:true});solid.push(m);return m}
+var ico=new T.Mesh(new T.IcosahedronGeometry(2.2,1),wm());g.add(ico);
+var pm=new T.PointsMaterial({size:.09,transparent:true});dots.push(pm);
+ico.add(new T.Points(ico.geometry,pm));
+var core=new T.Mesh(new T.OctahedronGeometry(1.1,0),wm());g.add(core);
+var r1=new T.Mesh(new T.TorusGeometry(3.3,.012,6,140),sm()),r2=new T.Mesh(new T.TorusGeometry(2.9,.012,6,140),sm());
+r1.rotation.x=1.2;r2.rotation.x=.4;g.add(r1,r2);
+var N=260,pos=new Float32Array(N*3);
+for(var i=0;i<N;i++){var r=4.5+Math.random()*6,th=Math.random()*6.283,ph=Math.acos(2*Math.random()-1);pos[i*3]=r*Math.sin(ph)*Math.cos(th);pos[i*3+1]=r*Math.sin(ph)*Math.sin(th);pos[i*3+2]=r*Math.cos(ph)}
+var pg=new T.BufferGeometry();pg.setAttribute("position",new T.BufferAttribute(pos,3));
+var pm2=new T.PointsMaterial({size:.05,transparent:true});dots.push(pm2);
+var field=new T.Points(pg,pm2);sc.add(field);
+function dk(){var x=document.documentElement.getAttribute("data-theme");return x?x==="dark":matchMedia("(prefers-color-scheme:dark)").matches}
+function paint(){
+var s=getComputedStyle(document.documentElement),a=new T.Color(s.getPropertyValue("--accent").trim()),b=new T.Color(s.getPropertyValue("--accent2").trim());
+var k=(dk()?1.4:1)*(innerWidth<700?.65:1);
+wire.forEach(function(m){m.color=a;m.opacity=.3*k});
+solid.forEach(function(m){m.color=b;m.opacity=.5*k});
+dots[0].color=b;dots[0].opacity=.9*k;dots[1].color=a;dots[1].opacity=.6*k;
+}
+function rs(){
+var w=innerWidth,h=innerHeight;rd.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();
+g.position.x=w/h>1.1?3.2:0;g.scale.setScalar(w<700?.8:1);paint();
+}
+var mx=0,my=0,cx=0,cy=0;
+addEventListener("pointermove",function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+function draw(t){
+cx+=(mx-cx)*.05;cy+=(my-cy)*.05;
+var s=Math.min(scrollY/innerHeight,4);
+ico.rotation.y=t*.00012+s*.6+cx*.8;ico.rotation.x=t*.00007+cy*.6;
+core.rotation.y=-t*.0003;core.rotation.x=t*.0002;
+r1.rotation.y=t*.0001+s*.3;r2.rotation.z=t*.0002;
+field.rotation.y=t*.00003+s*.15;
+g.position.y=s*.6;
+cam.position.x=cx*.8;cam.position.y=-cy*.6;cam.lookAt(0,0,0);
+rd.render(sc,cam);
+}
+var f=0;
+function loop(t){requestAnimationFrame(loop);if(document.hidden)return;if(++f%30===0)paint();draw(t)}
+addEventListener("resize",function(){rs();if(RM)draw(0)});
+rs();
+if(RM){draw(0);document.getElementById("tg").addEventListener("click",function(){paint();draw(0)})}else requestAnimationFrame(loop);
+})();
+/* hero ripples */
+var hero=document.getElementById("top"),lt=0;
+if(!RM)hero.addEventListener("pointermove",function(e){
+if(e.pointerType==="touch")return;var n=Date.now();if(n-lt<90)return;lt=n;
+var r=hero.getBoundingClientRect(),d=document.createElement("i");d.className="rip";
+d.style.left=e.clientX-r.left+"px";d.style.top=e.clientY-r.top+"px";hero.appendChild(d);
+setTimeout(function(){d.remove()},1200);
+});
+</script>
+</body>
+</html>
